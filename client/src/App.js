@@ -1,22 +1,22 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [data, setData] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
-      .then((data) => setData(data.message));
+      .then((data) => setData(data));
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
+        { data.map((autor) => <p> {`Nome completo: ${autor.firstName} ${autor.middleName} ${autor.lastName}`} </p>)}
+        </header>
     </div>
   );
 }

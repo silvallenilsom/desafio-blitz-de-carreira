@@ -1,11 +1,14 @@
-const { insertUser } = require('../models/usersModel');
+const { insertingUser } = require('../models/usersModel');
 
 const createUser = async (req, res) => {
-  const { name, email, password} = req.body;
-  const result = await insertUser(name, email, password);
-  return res.status(200).json({message: 'Usuário cadastrado com sucesso'});
+  const { name, email, password } = req.body;
+  const result = await insertingUser(name, email, password);
+  return res.status(201).json({ message: 'Usuário cadastrado com sucesso' });
 };
 
+const createTask = async (req, res) => {
+
+};
 module.exports = {
   createUser,
 };

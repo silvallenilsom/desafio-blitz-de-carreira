@@ -1,5 +1,6 @@
 const express = require("express");
 const authorRoute = require('./routes/authorsRoutes');
+const usersRoute = require('./routes/usersRoutes');
 const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 3001;
@@ -7,11 +8,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(bodyParser.json());
 
-/* app.get("/api", (_req, res) => {
-  res.json({ message: "Testando o NodeJS com Express!" });
-}); */
-
 app.use("/api", authorRoute);
+app.use("/users", usersRoute);
 
 app.listen(PORT, () => {
   console.log(`Servidor funcionando na porta ${PORT}`);
